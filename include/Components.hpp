@@ -8,6 +8,5 @@
 #include "SpriteComponent.hpp"
 #include "KeyboardController.hpp"
 #include "CollisionComponent.hpp"
-#include "TileComponent.hpp"
 
 #endif //BARWANIENGINE_COMPONENTS_HPP

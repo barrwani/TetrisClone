@@ -14,12 +14,16 @@ class KeyboardController : public Component{
 private:
     TransformComponent* transform;
     SpriteComponent* sprite;
+
     const Uint8* keystates = SDL_GetKeyboardState(nullptr);
 
 
 public:
     void init() override;
     void update() override;
+    void eightway();
+
+
 
 };
 

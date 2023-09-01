@@ -28,9 +28,9 @@ public:
     static AssetManager* assets;
     enum groupLabels : std::size_t
     {
-        groupMap,
         groupPlayers,
         groupColliders,
+        groupEnvironment
     };
 private:
     int cnt = 0;

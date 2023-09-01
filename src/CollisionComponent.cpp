@@ -8,8 +8,12 @@ void CollisionComponent::init()
     }
     transform = &entity->getComponent<TransformComponent>();
 
-    tex = TextureManager::LoadTexture("assets/ColTex.png");
+    //Collision texture
+    tex = TextureManager::LoadTexture("assets/coltex.png");
+
+    //Default square for src rect
     srcR = {0,0,32,32};
+    //dest rect set to collider rect
     destR = {collider.x, collider.y, collider.w, collider.h};
 
 
@@ -17,17 +21,20 @@ void CollisionComponent::init()
 
 void CollisionComponent::update()
 {
-    if(tag != "terrain")
-    {
-        collider.x = static_cast<int>(transform->position.x);
-        collider.y = static_cast<int>(transform->position.y);
-        collider.w = transform->getWidth() * transform->getScale();
-        collider.h = transform->getHeight() * transform->getScale();
-    }
+    destR = collider;
+
+    //updates collider rect position to match transform position
+    collider.x = static_cast<int>(transform->position.x);
+    collider.y = static_cast<int>(transform->position.y);
+    collider.w = transform->getWidth() * transform->getScale();
+    collider.h = transform->getHeight() * transform->getScale();
+
+    //updates relative position to camera
     destR.x = collider.x - Game::camera.x;
     destR.y = collider.y - Game::camera.y;
 }
 
+//Initialises Collision Component with collision tag
 CollisionComponent::CollisionComponent(std::string t) {tag = t;}
 
 

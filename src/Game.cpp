@@ -1,20 +1,10 @@
 #include "../include/Game.hpp"
 #include <iostream>
-#include "../include/Map.hpp"
 #include "../include/utils.hpp"
 #include "../include/Collision.hpp"
 
 //SDL2 ECS Game Engine based on tutorial series by Carl Birch's Tutorial Series
 //https://www.youtube.com/watch?v=44tO977slsU&list=PLhfAbcv9cehhkG7ZQK0nfIGJC_C-wSLrx&index=1
-
-//Once done with tutorial series implement:
-//collision layers
-//streamline existing code
-//make default objects as seperate classes (kinematicbody, staticbody, etc.) instead of initialising ECS components individually
-//make game
-
-//current issues:
-//what is going on with collision rn bruh
 
 
 SDL_Renderer* Game::renderer = nullptr;
@@ -25,9 +15,9 @@ bool Game::isRunning = false;
 
 SDL_Rect Game::camera = { 0,0,800,640 };
 
-Map* map;
 Manager manager;
 auto& player(manager.addEntity());
+auto& wall(manager.addEntity());
 AssetManager* Game::assets = new AssetManager(&manager);
 
 std::vector<CollisionComponent*> Game::colliders;
@@ -65,28 +55,31 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     } else
         isRunning = false;
 
-    assets->AddTexture("player", "assets/player_anims.png");
-    assets->AddTexture("terrain", "assets/terrain_ss.png");
+    assets->AddTexture("player", "assets/player.png");
+
+    assets->AddTexture("tile", "assets/dirt.png");
 
 
-    map = new Map("terrain", 3, 32);
-
-    map->LoadMap("assets/map.map", 25, 20);
-
-
-
-    player.addComponent<TransformComponent>(800.0f, 640.0f, 32 , 32, 2);
-    player.addComponent<SpriteComponent>("player", true);
+    player.addComponent<TransformComponent>(400.0f, 400.0f, 32 , 32, 2);
+    player.addComponent<SpriteComponent>("player");
     player.addComponent<KeyboardController>();
     player.addComponent<CollisionComponent>("player");
     player.addGroup(groupPlayers);
-    player.addGroup(groupColliders);
+
+
+    wall.addComponent<TransformComponent>(300.0f, 300.0f, 300,20,1);
+    wall.addComponent<SpriteComponent>("tile");
+    wall.addComponent<CollisionComponent>("tile");
+    wall.addGroup(groupColliders);
+    wall.addGroup(groupEnvironment);
+    Game::colliders.emplace_back(&wall.getComponent<CollisionComponent>());
+
+
 
 }
 
-auto& tiles(manager.getGroup(Game::groupMap));
 auto& players(manager.getGroup(Game::groupPlayers));
-auto& colliders(manager.getGroup(Game::groupColliders));
+auto& environment(manager.getGroup(Game::groupEnvironment));
 
 void Game::handleEvents()
 {
@@ -103,17 +96,20 @@ void Game::handleEvents()
 
 void Game::update()
 {
+    SDL_Rect playerCol = player.getComponent<CollisionComponent>().collider;
+
     manager.refresh();
     manager.update();
 
-    for(auto cc: colliders)
+    for(auto& cc: colliders)
     {
-        if(Collision::AABB(player.getComponent<CollisionComponent>(), *cc))
+        SDL_Rect cCol = cc->getCollider();
+        if (Collision::AABB(cCol, playerCol))
         {
-            std::cout << "Collision" << std::endl;
             player.getComponent<TransformComponent>().position = player.getComponent<TransformComponent>().lastPosition;
         }
     }
+
 
     Vector2& position = player.getComponent<TransformComponent>().position;
 
@@ -139,18 +135,24 @@ void Game::render()
 {
     SDL_RenderClear(renderer);
 
-    for(auto& t: tiles)
-        t->draw();
-
-
-
+    for (auto& e: environment)
+    {
+        e->draw();
+    }
     for(auto& p: players)
     {
         p->draw();
+        if(renderCollision)
+        {
+            p->getComponent<CollisionComponent>().draw();
+        }
     }
     if (renderCollision)
+    {
         for(auto& c: colliders)
             c->draw();
+    }
+
 
     SDL_RenderPresent(renderer);
 

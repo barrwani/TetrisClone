@@ -16,9 +16,7 @@ private:
     SDL_Texture* texture{};
     SDL_Rect srcRect{}, destRect{};
 
-    bool animated = false;
-    int frames = 1;
-    int speed = 100;
+
 public:
     int animIndex = 0;
     std::map<const char*, Animation> animations;
@@ -26,14 +24,12 @@ public:
 
     SpriteComponent() = default;
     explicit SpriteComponent(const std::string &id);
-    SpriteComponent(const std::string& id, bool isAnimated);
     ~SpriteComponent() override;
 
     void init() override;
     void update() override;
     void draw() override;
 
-    void play(const char* animName);
 
     void setTex(const std::string& id);
 };

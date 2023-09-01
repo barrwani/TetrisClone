@@ -70,13 +70,6 @@ build CMakeFiles/BarwaniEngine.dir/src/TextureManager.cpp.obj: CXX_COMPILER__Bar
   OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
 
-build CMakeFiles/BarwaniEngine.dir/src/Map.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/Map.cpp || cmake_object_order_depends_target_BarwaniEngine
-  DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\Map.cpp.obj.d
-  FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
-  INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
-
 build CMakeFiles/BarwaniEngine.dir/src/Vector2.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/Vector2.cpp || cmake_object_order_depends_target_BarwaniEngine
   DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\Vector2.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
@@ -126,13 +119,6 @@ build CMakeFiles/BarwaniEngine.dir/src/Collision.cpp.obj: CXX_COMPILER__BarwaniE
   OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
 
-build CMakeFiles/BarwaniEngine.dir/src/TileComponent.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/TileComponent.cpp || cmake_object_order_depends_target_BarwaniEngine
-  DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\TileComponent.cpp.obj.d
-  FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
-  INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
-
 build CMakeFiles/BarwaniEngine.dir/src/AssetManager.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/AssetManager.cpp || cmake_object_order_depends_target_BarwaniEngine
   DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\AssetManager.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
@@ -148,7 +134,7 @@ build CMakeFiles/BarwaniEngine.dir/src/AssetManager.cpp.obj: CXX_COMPILER__Barwa
 #############################################
 # Link the executable BarwaniEngine.exe
 
-build BarwaniEngine.exe: CXX_EXECUTABLE_LINKER__BarwaniEngine_Debug CMakeFiles/BarwaniEngine.dir/src/main.cpp.obj CMakeFiles/BarwaniEngine.dir/src/Game.cpp.obj CMakeFiles/BarwaniEngine.dir/src/TextureManager.cpp.obj CMakeFiles/BarwaniEngine.dir/src/Map.cpp.obj CMakeFiles/BarwaniEngine.dir/src/Vector2.cpp.obj CMakeFiles/BarwaniEngine.dir/src/TransformComponent.cpp.obj CMakeFiles/BarwaniEngine.dir/src/SpriteComponent.cpp.obj CMakeFiles/BarwaniEngine.dir/src/KeyboardController.cpp.obj CMakeFiles/BarwaniEngine.dir/src/ECS.cpp.obj CMakeFiles/BarwaniEngine.dir/src/CollisionComponent.cpp.obj CMakeFiles/BarwaniEngine.dir/src/Collision.cpp.obj CMakeFiles/BarwaniEngine.dir/src/TileComponent.cpp.obj CMakeFiles/BarwaniEngine.dir/src/AssetManager.cpp.obj
+build BarwaniEngine.exe: CXX_EXECUTABLE_LINKER__BarwaniEngine_Debug CMakeFiles/BarwaniEngine.dir/src/main.cpp.obj CMakeFiles/BarwaniEngine.dir/src/Game.cpp.obj CMakeFiles/BarwaniEngine.dir/src/TextureManager.cpp.obj CMakeFiles/BarwaniEngine.dir/src/Vector2.cpp.obj CMakeFiles/BarwaniEngine.dir/src/TransformComponent.cpp.obj CMakeFiles/BarwaniEngine.dir/src/SpriteComponent.cpp.obj CMakeFiles/BarwaniEngine.dir/src/KeyboardController.cpp.obj CMakeFiles/BarwaniEngine.dir/src/ECS.cpp.obj CMakeFiles/BarwaniEngine.dir/src/CollisionComponent.cpp.obj CMakeFiles/BarwaniEngine.dir/src/Collision.cpp.obj CMakeFiles/BarwaniEngine.dir/src/AssetManager.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lSDL2main  -lSDL2  -lSDL2_image  -lSDL2  -lSDL2_image  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/libs/sdl2/lib/x86   -LC:/libs/sdl2_image/lib/x86

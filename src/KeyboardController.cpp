@@ -9,6 +9,11 @@ void KeyboardController::init()
 
 void KeyboardController::update()
 {
+    eightway();
+}
+
+void KeyboardController::eightway()
+{
     transform->direction.x = 0;
     transform->direction.y = 0;
 
@@ -17,13 +22,11 @@ void KeyboardController::update()
         if(!keystates[SDL_SCANCODE_DOWN])
         {
             transform->direction.y = -1;
-//            sprite->play("Walk");
         }
 
         else
         {
             transform->direction.y = 0;
-//            sprite->play("Idle");
         }
     }
     if (keystates[SDL_SCANCODE_LEFT])
@@ -32,12 +35,10 @@ void KeyboardController::update()
         {
             transform->direction.x = -1;
             sprite->spriteFlip = SDL_FLIP_HORIZONTAL;
-//            sprite->play("Walk");
         }
         else
         {
             transform->direction.x = 0;
-//            sprite->play("Idle");
         }
     }
     if (keystates[SDL_SCANCODE_DOWN])
@@ -45,12 +46,10 @@ void KeyboardController::update()
         if(!keystates[SDL_SCANCODE_UP])
         {
             transform->direction.y = 1;
-//            sprite->play("Walk");
         }
         else
         {
             transform->direction.y = 0;
-//            sprite->play("Idle");
         }
 
     }
@@ -60,13 +59,12 @@ void KeyboardController::update()
         {
             transform->direction.x = 1;
             sprite->spriteFlip = SDL_FLIP_NONE;
-            //sprite->play("Walk");
         }
         else
         {
             transform->direction.x = 0;
-           // sprite->play("Idle");
         }
 
     }
 }
+
