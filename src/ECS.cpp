@@ -59,7 +59,7 @@ void Entity::addGroup(Group agroup)
     manager.addToGroup(this, agroup);
 }
 
-//returns the group of a given
+//returns a group's vector of entities
 std::vector<Entity*>& Manager::getGroup(Group agroup)
 {
     return groupedEntities[agroup];

@@ -47,5 +47,6 @@ CollisionComponent::CollisionComponent(std::string t, int xpos, int ypos, int si
 }
 void CollisionComponent::draw()
 {
-    TextureManager::Draw(tex, srcR, destR, SDL_FLIP_NONE);
+    if(visibleCollision)
+        TextureManager::Draw(tex, srcR, destR, SDL_FLIP_NONE);
 }

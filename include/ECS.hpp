@@ -53,7 +53,7 @@ public:
 };
 
 class Entity{
-private:
+protected:
     Manager& manager;
     bool active = true;
     std::vector<std::unique_ptr<Component>> components;
@@ -61,13 +61,14 @@ private:
     ComponentArray componentArray;
     ComponentBitSet componentBitSet;
     GroupBitSet groupBitSet;
+
 public:
     void update();
     void draw();
 
     Entity(Manager& amanager) : manager(amanager) {}
 
-    [[nodiscard]] bool isActive() const;
+    bool isActive() const;
     void destroy();
 
     //checks if entity is in a given group

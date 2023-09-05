@@ -16,7 +16,7 @@ private:
 
 public:
     SDL_Rect collider;
-
+    bool visibleCollision = false;
     SDL_Rect getCollider() const {return collider;}
     std::string getTag() const {return tag;}
     TransformComponent* getTransform() const {return transform;}

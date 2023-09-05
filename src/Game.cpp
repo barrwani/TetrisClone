@@ -10,7 +10,6 @@
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
-bool renderCollision = true;
 bool Game::isRunning = false;
 
 SDL_Rect Game::camera = { 0,0,800,640 };
@@ -142,15 +141,6 @@ void Game::render()
     for(auto& p: players)
     {
         p->draw();
-        if(renderCollision)
-        {
-            p->getComponent<CollisionComponent>().draw();
-        }
-    }
-    if (renderCollision)
-    {
-        for(auto& c: colliders)
-            c->draw();
     }
 
 
