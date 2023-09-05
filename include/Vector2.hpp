@@ -1,6 +1,6 @@
 
-#ifndef BARWANIENGINE_VECTOR2_HPP
-#define BARWANIENGINE_VECTOR2_HPP
+#ifndef TETRISCLONE_VECTOR2_HPP
+#define TETRISCLONE_VECTOR2_HPP
 #include <iostream>
 #include <Math.h>
 
@@ -40,4 +40,4 @@ public:
 
 
 
-#endif //BARWANIENGINE_VECTOR2_HPP
+#endif //TETRISCLONE_VECTOR2_HPP
