@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "TetrisClone.exe"
+			"path" : "BarwaniEngine.exe"
 		},
 		{
-			"path" : "TetrisClone.pdb"
+			"path" : "BarwaniEngine.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -116,7 +116,7 @@
 			]
 		}
 	],
-	"id" : "TetrisClone::@6890427a1f51a3e7e1df",
+	"id" : "BarwaniEngine::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -171,8 +171,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "TetrisClone",
-	"nameOnDisk" : "TetrisClone.exe",
+	"name" : "BarwaniEngine",
+	"nameOnDisk" : "BarwaniEngine.exe",
 	"paths" : 
 	{
 		"build" : ".",

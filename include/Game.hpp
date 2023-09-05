@@ -1,5 +1,5 @@
-#ifndef TETRISCLONE_GAME_H
-#define TETRISCLONE_GAME_H
+#ifndef UNTITLED4_GAME_H
+#define UNTITLED4_GAME_H
 #include <SDL_image.h>
 #include <SDL.h>
 #include <vector>
@@ -38,4 +38,4 @@ private:
 };
 
 
-#endif //TETRISCLONE_GAME_H
+#endif //UNTITLED4_GAME_H

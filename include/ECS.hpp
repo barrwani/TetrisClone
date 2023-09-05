@@ -1,5 +1,5 @@
-#ifndef TETRISCLONE_ECS_HPP
-#define TETRISCLONE_ECS_HPP
+#ifndef BARWANIENGINE_ECS_HPP
+#define BARWANIENGINE_ECS_HPP
 
 #include <iostream>
 #include <vector>
@@ -124,4 +124,4 @@ public:
     Entity& addEntity();
 };
 
-#endif //TETRISCLONE_ECS_HPP
+#endif //BARWANIENGINE_ECS_HPP

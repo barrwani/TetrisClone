@@ -11,7 +11,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/asood/CLionProjects/Tetris Clone/cmake-build-debug"
+			"value" : "C:/Users/asood/CLionProjects/BarwaniEngine/cmake-build-debug"
 		},
 		{
 			"name" : "BarwaniEngine_IS_TOP_LEVEL",
@@ -35,7 +35,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/asood/CLionProjects/Tetris Clone"
+			"value" : "C:/Users/asood/CLionProjects/BarwaniEngine"
 		},
 		{
 			"name" : "CMAKE_ADDR2LINE",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/asood/CLionProjects/Tetris Clone/cmake-build-debug"
+			"value" : "c:/Users/asood/CLionProjects/BarwaniEngine/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -611,7 +611,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/asood/CLionProjects/Tetris Clone/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/asood/CLionProjects/BarwaniEngine/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -683,7 +683,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/asood/CLionProjects/Tetris Clone"
+			"value" : "C:/Users/asood/CLionProjects/BarwaniEngine"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -911,7 +911,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "TetrisClone"
+			"value" : "BarwaniEngine"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1288,78 +1288,6 @@
 			],
 			"type" : "BOOL",
 			"value" : "FALSE"
-		},
-		{
-			"name" : "TetrisClone_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/Users/asood/CLionProjects/Tetris Clone/cmake-build-debug"
-		},
-		{
-			"name" : "TetrisClone_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "TetrisClone_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/Users/asood/CLionProjects/Tetris Clone"
-		},
-		{
-			"name" : "Tetris_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/Users/asood/CLionProjects/Tetris Clone/cmake-build-debug"
-		},
-		{
-			"name" : "Tetris_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "Tetris_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/Users/asood/CLionProjects/Tetris Clone"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

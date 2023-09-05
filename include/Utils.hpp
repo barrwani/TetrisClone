@@ -1,5 +1,5 @@
-#ifndef TETRISCLONE_UTILS_H
-#define TETRISCLONE_UTILS_H
+#ifndef UNTITLED4_UTILS_H
+#define UNTITLED4_UTILS_H
 #include <SDL.h>
 
 
@@ -87,4 +87,4 @@ namespace Utils
 }
 
 
-#endif //TETRISCLONE_UTILS_H
+#endif //UNTITLED4_UTILS_H

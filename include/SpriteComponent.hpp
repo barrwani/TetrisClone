@@ -1,5 +1,5 @@
-#ifndef TETRISCLONE_SPRITECOMPONENT_HPP
-#define TETRISCLONE_SPRITECOMPONENT_HPP
+#ifndef BARWANIENGINE_SPRITECOMPONENT_HPP
+#define BARWANIENGINE_SPRITECOMPONENT_HPP
 
 #include "ECS.hpp"
 #include "TransformComponent.hpp"
@@ -34,4 +34,4 @@ public:
     void setTex(const std::string& id);
 };
 
-#endif //TETRISCLONE_SPRITECOMPONENT_HPP
+#endif //BARWANIENGINE_SPRITECOMPONENT_HPP

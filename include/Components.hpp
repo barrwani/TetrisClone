@@ -1,6 +1,6 @@
 
-#ifndef TETRISCLONE_COMPONENTS_HPP
-#define TETRISCLONE_COMPONENTS_HPP
+#ifndef BARWANIENGINE_COMPONENTS_HPP
+#define BARWANIENGINE_COMPONENTS_HPP
 
 #include <iostream>
 #include "ECS.hpp"
@@ -9,4 +9,4 @@
 #include "KeyboardController.hpp"
 #include "CollisionComponent.hpp"
 
-#endif //TETRISCLONE_COMPONENTS_HPP
+#endif //BARWANIENGINE_COMPONENTS_HPP
