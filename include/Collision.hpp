@@ -1,7 +1,7 @@
 #include "SDL.h"
 #include "CollisionComponent.hpp"
-#ifndef BARWANIENGINE_COLLISION_HPP
-#define BARWANIENGINE_COLLISION_HPP
+#ifndef TETRISCLONE_COLLISION_HPP
+#define TETRISCLONE_COLLISION_HPP
 
 
 class Collision {
@@ -12,4 +12,4 @@ public:
 };
 
 
-#endif //BARWANIENGINE_COLLISION_HPP
+#endif //TETRISCLONE_COLLISION_HPP

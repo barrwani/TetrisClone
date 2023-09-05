@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 
     game = new Game();
 
-    game->init("Barwani Engine", SDL_WINDOWPOS_CENTERED,
+    game->init("Tetris", SDL_WINDOWPOS_CENTERED,
                SDL_WINDOWPOS_CENTERED, 800, 640, false);
 
 

@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: BarwaniEngine
+# Project: TetrisClone
 # Configurations: Debug
 # =============================================================================
 
@@ -39,118 +39,118 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/asood/CLionProjects/BarwaniEngine/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/asood/CLionProjects/TetrisClone/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target BarwaniEngine
+# Object build statements for EXECUTABLE target TetrisClone
 
 
 #############################################
-# Order-only phony target for BarwaniEngine
+# Order-only phony target for TetrisClone
 
-build cmake_object_order_depends_target_BarwaniEngine: phony || CMakeFiles/BarwaniEngine.dir
+build cmake_object_order_depends_target_TetrisClone: phony || CMakeFiles/TetrisClone.dir
 
-build CMakeFiles/BarwaniEngine.dir/src/main.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/main.cpp || cmake_object_order_depends_target_BarwaniEngine
-  DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\main.cpp.obj.d
+build CMakeFiles/TetrisClone.dir/src/main.cpp.obj: CXX_COMPILER__TetrisClone_unscanned_Debug C$:/Users/asood/CLionProjects/TetrisClone/src/main.cpp || cmake_object_order_depends_target_TetrisClone
+  DEP_FILE = CMakeFiles\TetrisClone.dir\src\main.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
   INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
+  OBJECT_DIR = CMakeFiles\TetrisClone.dir
+  OBJECT_FILE_DIR = CMakeFiles\TetrisClone.dir\src
 
-build CMakeFiles/BarwaniEngine.dir/src/Game.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/Game.cpp || cmake_object_order_depends_target_BarwaniEngine
-  DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\Game.cpp.obj.d
+build CMakeFiles/TetrisClone.dir/src/Game.cpp.obj: CXX_COMPILER__TetrisClone_unscanned_Debug C$:/Users/asood/CLionProjects/TetrisClone/src/Game.cpp || cmake_object_order_depends_target_TetrisClone
+  DEP_FILE = CMakeFiles\TetrisClone.dir\src\Game.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
   INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
+  OBJECT_DIR = CMakeFiles\TetrisClone.dir
+  OBJECT_FILE_DIR = CMakeFiles\TetrisClone.dir\src
 
-build CMakeFiles/BarwaniEngine.dir/src/TextureManager.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/TextureManager.cpp || cmake_object_order_depends_target_BarwaniEngine
-  DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\TextureManager.cpp.obj.d
+build CMakeFiles/TetrisClone.dir/src/TextureManager.cpp.obj: CXX_COMPILER__TetrisClone_unscanned_Debug C$:/Users/asood/CLionProjects/TetrisClone/src/TextureManager.cpp || cmake_object_order_depends_target_TetrisClone
+  DEP_FILE = CMakeFiles\TetrisClone.dir\src\TextureManager.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
   INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
+  OBJECT_DIR = CMakeFiles\TetrisClone.dir
+  OBJECT_FILE_DIR = CMakeFiles\TetrisClone.dir\src
 
-build CMakeFiles/BarwaniEngine.dir/src/Vector2.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/Vector2.cpp || cmake_object_order_depends_target_BarwaniEngine
-  DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\Vector2.cpp.obj.d
+build CMakeFiles/TetrisClone.dir/src/Vector2.cpp.obj: CXX_COMPILER__TetrisClone_unscanned_Debug C$:/Users/asood/CLionProjects/TetrisClone/src/Vector2.cpp || cmake_object_order_depends_target_TetrisClone
+  DEP_FILE = CMakeFiles\TetrisClone.dir\src\Vector2.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
   INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
+  OBJECT_DIR = CMakeFiles\TetrisClone.dir
+  OBJECT_FILE_DIR = CMakeFiles\TetrisClone.dir\src
 
-build CMakeFiles/BarwaniEngine.dir/src/TransformComponent.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/TransformComponent.cpp || cmake_object_order_depends_target_BarwaniEngine
-  DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\TransformComponent.cpp.obj.d
+build CMakeFiles/TetrisClone.dir/src/TransformComponent.cpp.obj: CXX_COMPILER__TetrisClone_unscanned_Debug C$:/Users/asood/CLionProjects/TetrisClone/src/TransformComponent.cpp || cmake_object_order_depends_target_TetrisClone
+  DEP_FILE = CMakeFiles\TetrisClone.dir\src\TransformComponent.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
   INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
+  OBJECT_DIR = CMakeFiles\TetrisClone.dir
+  OBJECT_FILE_DIR = CMakeFiles\TetrisClone.dir\src
 
-build CMakeFiles/BarwaniEngine.dir/src/SpriteComponent.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/SpriteComponent.cpp || cmake_object_order_depends_target_BarwaniEngine
-  DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\SpriteComponent.cpp.obj.d
+build CMakeFiles/TetrisClone.dir/src/SpriteComponent.cpp.obj: CXX_COMPILER__TetrisClone_unscanned_Debug C$:/Users/asood/CLionProjects/TetrisClone/src/SpriteComponent.cpp || cmake_object_order_depends_target_TetrisClone
+  DEP_FILE = CMakeFiles\TetrisClone.dir\src\SpriteComponent.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
   INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
+  OBJECT_DIR = CMakeFiles\TetrisClone.dir
+  OBJECT_FILE_DIR = CMakeFiles\TetrisClone.dir\src
 
-build CMakeFiles/BarwaniEngine.dir/src/KeyboardController.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/KeyboardController.cpp || cmake_object_order_depends_target_BarwaniEngine
-  DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\KeyboardController.cpp.obj.d
+build CMakeFiles/TetrisClone.dir/src/KeyboardController.cpp.obj: CXX_COMPILER__TetrisClone_unscanned_Debug C$:/Users/asood/CLionProjects/TetrisClone/src/KeyboardController.cpp || cmake_object_order_depends_target_TetrisClone
+  DEP_FILE = CMakeFiles\TetrisClone.dir\src\KeyboardController.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
   INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
+  OBJECT_DIR = CMakeFiles\TetrisClone.dir
+  OBJECT_FILE_DIR = CMakeFiles\TetrisClone.dir\src
 
-build CMakeFiles/BarwaniEngine.dir/src/ECS.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/ECS.cpp || cmake_object_order_depends_target_BarwaniEngine
-  DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\ECS.cpp.obj.d
+build CMakeFiles/TetrisClone.dir/src/ECS.cpp.obj: CXX_COMPILER__TetrisClone_unscanned_Debug C$:/Users/asood/CLionProjects/TetrisClone/src/ECS.cpp || cmake_object_order_depends_target_TetrisClone
+  DEP_FILE = CMakeFiles\TetrisClone.dir\src\ECS.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
   INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
+  OBJECT_DIR = CMakeFiles\TetrisClone.dir
+  OBJECT_FILE_DIR = CMakeFiles\TetrisClone.dir\src
 
-build CMakeFiles/BarwaniEngine.dir/src/CollisionComponent.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/CollisionComponent.cpp || cmake_object_order_depends_target_BarwaniEngine
-  DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\CollisionComponent.cpp.obj.d
+build CMakeFiles/TetrisClone.dir/src/CollisionComponent.cpp.obj: CXX_COMPILER__TetrisClone_unscanned_Debug C$:/Users/asood/CLionProjects/TetrisClone/src/CollisionComponent.cpp || cmake_object_order_depends_target_TetrisClone
+  DEP_FILE = CMakeFiles\TetrisClone.dir\src\CollisionComponent.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
   INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
+  OBJECT_DIR = CMakeFiles\TetrisClone.dir
+  OBJECT_FILE_DIR = CMakeFiles\TetrisClone.dir\src
 
-build CMakeFiles/BarwaniEngine.dir/src/Collision.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/Collision.cpp || cmake_object_order_depends_target_BarwaniEngine
-  DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\Collision.cpp.obj.d
+build CMakeFiles/TetrisClone.dir/src/Collision.cpp.obj: CXX_COMPILER__TetrisClone_unscanned_Debug C$:/Users/asood/CLionProjects/TetrisClone/src/Collision.cpp || cmake_object_order_depends_target_TetrisClone
+  DEP_FILE = CMakeFiles\TetrisClone.dir\src\Collision.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
   INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
+  OBJECT_DIR = CMakeFiles\TetrisClone.dir
+  OBJECT_FILE_DIR = CMakeFiles\TetrisClone.dir\src
 
-build CMakeFiles/BarwaniEngine.dir/src/AssetManager.cpp.obj: CXX_COMPILER__BarwaniEngine_unscanned_Debug C$:/Users/asood/CLionProjects/BarwaniEngine/src/AssetManager.cpp || cmake_object_order_depends_target_BarwaniEngine
-  DEP_FILE = CMakeFiles\BarwaniEngine.dir\src\AssetManager.cpp.obj.d
+build CMakeFiles/TetrisClone.dir/src/AssetManager.cpp.obj: CXX_COMPILER__TetrisClone_unscanned_Debug C$:/Users/asood/CLionProjects/TetrisClone/src/AssetManager.cpp || cmake_object_order_depends_target_TetrisClone
+  DEP_FILE = CMakeFiles\TetrisClone.dir\src\AssetManager.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
   INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\BarwaniEngine.dir\src
+  OBJECT_DIR = CMakeFiles\TetrisClone.dir
+  OBJECT_FILE_DIR = CMakeFiles\TetrisClone.dir\src
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target BarwaniEngine
+# Link build statements for EXECUTABLE target TetrisClone
 
 
 #############################################
-# Link the executable BarwaniEngine.exe
+# Link the executable TetrisClone.exe
 
-build BarwaniEngine.exe: CXX_EXECUTABLE_LINKER__BarwaniEngine_Debug CMakeFiles/BarwaniEngine.dir/src/main.cpp.obj CMakeFiles/BarwaniEngine.dir/src/Game.cpp.obj CMakeFiles/BarwaniEngine.dir/src/TextureManager.cpp.obj CMakeFiles/BarwaniEngine.dir/src/Vector2.cpp.obj CMakeFiles/BarwaniEngine.dir/src/TransformComponent.cpp.obj CMakeFiles/BarwaniEngine.dir/src/SpriteComponent.cpp.obj CMakeFiles/BarwaniEngine.dir/src/KeyboardController.cpp.obj CMakeFiles/BarwaniEngine.dir/src/ECS.cpp.obj CMakeFiles/BarwaniEngine.dir/src/CollisionComponent.cpp.obj CMakeFiles/BarwaniEngine.dir/src/Collision.cpp.obj CMakeFiles/BarwaniEngine.dir/src/AssetManager.cpp.obj
+build TetrisClone.exe: CXX_EXECUTABLE_LINKER__TetrisClone_Debug CMakeFiles/TetrisClone.dir/src/main.cpp.obj CMakeFiles/TetrisClone.dir/src/Game.cpp.obj CMakeFiles/TetrisClone.dir/src/TextureManager.cpp.obj CMakeFiles/TetrisClone.dir/src/Vector2.cpp.obj CMakeFiles/TetrisClone.dir/src/TransformComponent.cpp.obj CMakeFiles/TetrisClone.dir/src/SpriteComponent.cpp.obj CMakeFiles/TetrisClone.dir/src/KeyboardController.cpp.obj CMakeFiles/TetrisClone.dir/src/ECS.cpp.obj CMakeFiles/TetrisClone.dir/src/CollisionComponent.cpp.obj CMakeFiles/TetrisClone.dir/src/Collision.cpp.obj CMakeFiles/TetrisClone.dir/src/AssetManager.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lSDL2main  -lSDL2  -lSDL2_image  -lSDL2  -lSDL2_image  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/libs/sdl2/lib/x86   -LC:/libs/sdl2_image/lib/x86
-  OBJECT_DIR = CMakeFiles\BarwaniEngine.dir
+  OBJECT_DIR = CMakeFiles\TetrisClone.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = BarwaniEngine.exe
-  TARGET_IMPLIB = libBarwaniEngine.dll.a
-  TARGET_PDB = BarwaniEngine.exe.dbg
+  TARGET_FILE = TetrisClone.exe
+  TARGET_IMPLIB = libTetrisClone.dll.a
+  TARGET_PDB = TetrisClone.exe.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\asood\CLionProjects\BarwaniEngine\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.3.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\Users\asood\CLionProjects\TetrisClone\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.3.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -161,7 +161,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\asood\CLionProjects\BarwaniEngine\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.3.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\asood\CLionProjects\BarwaniEngine -BC:\Users\asood\CLionProjects\BarwaniEngine\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D C:\Users\asood\CLionProjects\TetrisClone\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.3.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\asood\CLionProjects\TetrisClone -BC:\Users\asood\CLionProjects\TetrisClone\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -171,7 +171,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build BarwaniEngine: phony BarwaniEngine.exe
+build TetrisClone: phony TetrisClone.exe
 
 # =============================================================================
 # Folder targets.
@@ -179,9 +179,9 @@ build BarwaniEngine: phony BarwaniEngine.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/asood/CLionProjects/BarwaniEngine/cmake-build-debug
+# Folder: C:/Users/asood/CLionProjects/TetrisClone/cmake-build-debug
 
-build all: phony BarwaniEngine.exe
+build all: phony TetrisClone.exe
 
 # =============================================================================
 # Built-in targets
@@ -190,14 +190,14 @@ build all: phony BarwaniEngine.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/asood/CLionProjects/BarwaniEngine/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/asood/CLionProjects/TetrisClone/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/asood/CLionProjects/BarwaniEngine/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
+build C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2022.3.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/asood/CLionProjects/TetrisClone/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
 
 
 #############################################
