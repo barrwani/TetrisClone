@@ -13,7 +13,7 @@ private:
 
     int height = 32;
     int width = 32;
-    int scale = 2;
+    int scale = 1;
 public:
     //Position and direction vectors
     Vector2 position;

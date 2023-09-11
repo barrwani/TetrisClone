@@ -1,22 +1,34 @@
 #include "../include/Game.hpp"
 #include <iostream>
 #include "../include/utils.hpp"
+#include <random>
 #include "../include/Collision.hpp"
 
 //SDL2 ECS Game Engine based on tutorial series by Carl Birch's Tutorial Series
 //https://www.youtube.com/watch?v=44tO977slsU&list=PLhfAbcv9cehhkG7ZQK0nfIGJC_C-wSLrx&index=1
 
 
+//TODO:
+// -Proper Tetromino Movement (left, right, soft drop, hard drop)
+// -Tetromino Shapes
+// -Setting and Rotating
+// -Boundaries and Spawning
+// -Next 5 pieces
+// -Losing Mechanic
+// -Clear needs to be tested for more than one line being cleared at a time
+
+
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
+int grid[15][10] = {};
+
+bool inGame = true;
 bool Game::isRunning = false;
 
-SDL_Rect Game::camera = { 0,0,800,640 };
 
 Manager manager;
-auto& player(manager.addEntity());
-auto& wall(manager.addEntity());
+auto& ui(manager.addEntity());
 AssetManager* Game::assets = new AssetManager(&manager);
 
 std::vector<CollisionComponent*> Game::colliders;
@@ -46,7 +58,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 
         if(renderer)
         {
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+                SDL_SetRenderDrawColor(renderer, 15, 15, 15, 255);
             std::cout << "Renderer created!" << std::endl;
         }
         isRunning = true;
@@ -54,30 +66,22 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     } else
         isRunning = false;
 
-    assets->AddTexture("player", "assets/player.png");
-
-    assets->AddTexture("tile", "assets/dirt.png");
-
-
-    player.addComponent<TransformComponent>(400.0f, 400.0f, 32 , 32, 2);
-    player.addComponent<SpriteComponent>("player");
-    player.addComponent<KeyboardController>();
-    player.addComponent<CollisionComponent>("player");
-    player.addGroup(groupPlayers);
+    assets ->AddTexture("HUD", "assets/UI.png");
+    assets->AddTexture("tetro", "assets/tetromblank.png");
 
 
-    wall.addComponent<TransformComponent>(300.0f, 300.0f, 300,20,1);
-    wall.addComponent<SpriteComponent>("tile");
-    wall.addComponent<CollisionComponent>("tile");
-    wall.addGroup(groupColliders);
-    wall.addGroup(groupEnvironment);
-    Game::colliders.emplace_back(&wall.getComponent<CollisionComponent>());
+    ui.addComponent<TransformComponent>(0.0f,0.0f, 1080, 1920,1);
+    ui.addComponent<SpriteComponent>("HUD");
+    ui.addGroup(groupEnvironment);
+
+    spawnTetromino();
+
 
 
 
 }
 
-auto& players(manager.getGroup(Game::groupPlayers));
+auto& tetrominos(manager.getGroup(Game::groupTetromino));
 auto& environment(manager.getGroup(Game::groupEnvironment));
 
 void Game::handleEvents()
@@ -95,55 +99,95 @@ void Game::handleEvents()
 
 void Game::update()
 {
-    SDL_Rect playerCol = player.getComponent<CollisionComponent>().collider;
+//    SDL_Rect tetCol = tetromino.getComponent<CollisionComponent>().collider;
 
     manager.refresh();
     manager.update();
 
-    for(auto& cc: colliders)
+//    for(auto& cc: colliders)
+//    {
+//        SDL_Rect cCol = cc->getCollider();
+//        if (Collision::AABB(cCol, tetCol))
+//        {
+//            tetromino.getComponent<TransformComponent>().position =
+//            tetromino.getComponent<TransformComponent>().lastPosition;
+//        }
+//    }
+//
+//
+//    Vector2& position = tetromino.getComponent<TransformComponent>().position;
+}
+
+bool Game::spawnTetromino()
+{
+    //For spawning different shapes, have an RNG decide the shape then use switch case and a for loop that runs 4 times
+
+    //The for loop will put the pieces together, and since they'll all have the same keyboard controller the 4 blocks-
+    //-should stick together
+
+    //There will be some boundary issues so a relative position of the borders should be kept and used to determine-
+    //-things like valid rotations/movement
+    //Position is public, process all disallowance of movement in Game script where all 4 pieces are accessible
+
+    auto& tetromino(manager.addEntity());
+    tetromino.addComponent<TransformComponent>(973.0f, 62.0f, 64, 64, 1);
+    tetromino.addComponent<CollisionComponent>("tetromino");
+    tetromino.addComponent<SpriteComponent>("tetro");
+    tetromino.addComponent<KeyboardController>();
+    tetromino.addGroup(groupTetromino);
+
+}
+
+void Game::clearLine(int index)
+{
+    //Shifts all lines above cleared line down one space, overwriting the line to be cleared
+    for(int y = index; y >=0; y--)
     {
-        SDL_Rect cCol = cc->getCollider();
-        if (Collision::AABB(cCol, playerCol))
+        for(int x = 0; x < 10; x++)
         {
-            player.getComponent<TransformComponent>().position = player.getComponent<TransformComponent>().lastPosition;
+            if(y-1 >=0)
+            {
+                grid[y][x] = grid[y-1][x];
+
+            }
+            //Once the loop reaches the top of the grid it sets the shifted line to 0
+            else
+                grid[y][x] = 0;
         }
     }
 
-
-    Vector2& position = player.getComponent<TransformComponent>().position;
-
-    camera.x = static_cast<int>(position.x - 400);
-    camera.y = static_cast<int>(position.y - 320);
-
-    if (camera.x < 0)
-        camera.x = 0;
-
-    if (camera.y < 0)
-        camera.y = 0;
-
-    if (camera.x > camera.w)
-        camera.x = camera.w;
-
-    if (camera.y > camera.h)
-        camera.y = camera.h;
 }
-
-
 
 void Game::render()
 {
     SDL_RenderClear(renderer);
-
     for (auto& e: environment)
     {
         e->draw();
     }
-    for(auto& p: players)
+    for(auto& t: tetrominos)
     {
-        p->draw();
+        t->draw();
     }
-
-
+    int row = 0;
+    for(auto & y : grid)
+    {
+        row++;
+        int cl = 0;
+        for(int x : y)
+        {
+            if(x == 1)
+            {
+                cl++;
+                //render a block at that position
+                //add a collisionshape to that position to prevent pieces from going through it
+                if(cl == 10)
+                {
+                    clearLine(row);
+                }
+            }
+        }
+    }
     SDL_RenderPresent(renderer);
 
 }

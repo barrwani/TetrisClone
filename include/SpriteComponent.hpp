@@ -5,8 +5,6 @@
 #include "TransformComponent.hpp"
 #include "TextureManager.hpp"
 #include <SDL.h>
-#include "Animation.hpp"
-#include <map>
 
 
 
@@ -19,7 +17,6 @@ private:
 
 public:
     int animIndex = 0;
-    std::map<const char*, Animation> animations;
     SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
 
     SpriteComponent() = default;

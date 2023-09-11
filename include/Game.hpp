@@ -18,17 +18,19 @@ public:
     static void update();
     static void render();
     void clean();
+    bool spawnTetromino();
+    bool holdTetromino();
+    static void clearLine(int index);
     static bool running();
 
     static SDL_Renderer* renderer;
     static SDL_Event event;
     static bool isRunning;
     static std::vector<CollisionComponent*> colliders;
-    static SDL_Rect camera;
     static AssetManager* assets;
     enum groupLabels : std::size_t
     {
-        groupPlayers,
+        groupTetromino,
         groupColliders,
         groupEnvironment
     };

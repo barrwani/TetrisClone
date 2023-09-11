@@ -12,7 +12,7 @@ void CollisionComponent::init()
     tex = TextureManager::LoadTexture("assets/coltex.png");
 
     //Default square for src rect
-    srcR = {0,0,32,32};
+    srcR = {0,0,16,16};
     //dest rect set to collider rect
     destR = {collider.x, collider.y, collider.w, collider.h};
 
@@ -30,8 +30,8 @@ void CollisionComponent::update()
     collider.h = transform->getHeight() * transform->getScale();
 
     //updates relative position to camera
-    destR.x = collider.x - Game::camera.x;
-    destR.y = collider.y - Game::camera.y;
+    destR.x = collider.x ;
+    destR.y = collider.y ;
 }
 
 //Initialises Collision Component with collision tag

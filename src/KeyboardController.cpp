@@ -5,11 +5,44 @@ void KeyboardController::init()
     transform = &entity->getComponent<TransformComponent>();
     sprite = &entity->getComponent<SpriteComponent>();
 }
-
+bool pressed = false;
+Uint32 frameStart;
+int frameTime;
 
 void KeyboardController::update()
 {
-    eightway();
+    //Instead of using frametime, maybe use Utils timer... it only moves once, but after timer it moves smoothly
+    if(frameTime % 20 == 0 && frameTime != 0)
+    {
+        frameStart = SDL_GetTicks();
+        pressed = false;
+
+    }
+    tetris();
+    if(keystates[SDL_SCANCODE_ESCAPE])
+    {
+       Game::isRunning = false;
+    }
+
+    frameTime = SDL_GetTicks() - frameStart;
+
+
+
+}
+
+void KeyboardController::tetris()
+{
+
+    if(keystates[SDL_SCANCODE_LEFT] && !pressed)
+    {
+        pressed = true;
+        transform->position.x -=64;
+    }
+    if(keystates[SDL_SCANCODE_RIGHT] && !pressed)
+    {
+        pressed = true;
+        transform->position.x +=64;
+    }
 }
 
 void KeyboardController::eightway()

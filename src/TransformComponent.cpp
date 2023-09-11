@@ -37,8 +37,7 @@ TransformComponent::TransformComponent(float x, float y, int h, int w, int s)
 void TransformComponent::init()
 {
     //Initialise with no direction
-    direction.x = 0;
-    direction.y = 0;
+    direction = ZERO;
 }
 
 void TransformComponent::update()
