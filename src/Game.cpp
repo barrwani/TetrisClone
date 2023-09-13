@@ -1,6 +1,6 @@
 #include "../include/Game.hpp"
 #include <iostream>
-#include "../include/utils.hpp"
+#include "../include/Utils.hpp"
 #include <random>
 #include "../include/Collision.hpp"
 
@@ -21,8 +21,15 @@
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
+int fallticktime = 1000;
+int settime = 300;
+Utils::Timer falltimer; //Timer for tetromino falling
+Utils::Timer settimer; //Timer for tetromino setting, resets when piece is rotated/moved
+Vector2 topleft(588.0f, -66.0f);
+
 int grid[15][10] = {};
 
+int nextfive[5];
 bool inGame = true;
 bool Game::isRunning = false;
 
@@ -73,13 +80,29 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     ui.addComponent<TransformComponent>(0.0f,0.0f, 1080, 1920,1);
     ui.addComponent<SpriteComponent>("HUD");
     ui.addGroup(groupEnvironment);
-
-    spawnTetromino();
-
-
-
-
+    firstFill();
+    spawnTetromino(nextfive[0]);
+    grid[5][5] = 1;
 }
+
+void Game::newPiece()
+{
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    nextfive[0] =std::uniform_int_distribution<int>(1,7)(mt);
+}
+
+void Game::firstFill()
+{
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    for (int & i : nextfive)
+    {
+
+        i =std::uniform_int_distribution<int>(1,7)(mt);
+    }
+}
+
 
 auto& tetrominos(manager.getGroup(Game::groupTetromino));
 auto& environment(manager.getGroup(Game::groupEnvironment));
@@ -104,6 +127,19 @@ void Game::update()
     manager.refresh();
     manager.update();
 
+    if (falltimer.getTicks() > fallticktime)
+    {
+        falltimer.stop();
+        falltimer.start();
+        for(auto& t: tetrominos)
+        {
+            if(t->getComponent<TransformComponent>().position.y < 958)
+            {
+                t->getComponent<TransformComponent>().position.y += 64;
+            }
+        }
+    }
+
 //    for(auto& cc: colliders)
 //    {
 //        SDL_Rect cCol = cc->getCollider();
@@ -118,9 +154,39 @@ void Game::update()
 //    Vector2& position = tetromino.getComponent<TransformComponent>().position;
 }
 
-bool Game::spawnTetromino()
+bool Game::spawnTetromino(int pieceshape)
 {
+    falltimer.start();
     //For spawning different shapes, have an RNG decide the shape then use switch case and a for loop that runs 4 times
+    switch (pieceshape){
+        case I:
+            for(int y = 1; y <=4; y++)
+            {
+                auto& tetromino(manager.addEntity());
+                tetromino.addComponent<TransformComponent>(973.0f, 62.0f * y, 64, 64, 1);
+                tetromino.addComponent<CollisionComponent>("tetromino");
+                tetromino.addComponent<SpriteComponent>("tetro");
+                tetromino.addComponent<KeyboardController>();
+                tetromino.addGroup(groupTetromino);
+            }
+            break;
+        case S:
+
+            break;
+        case Z:
+            break;
+        case J:
+            break;
+        case O:
+            break;
+        case T:
+            break;
+        case L:
+            break;
+        default:
+            break;
+
+    }
 
     //The for loop will put the pieces together, and since they'll all have the same keyboard controller the 4 blocks-
     //-should stick together
@@ -174,12 +240,19 @@ void Game::render()
     {
         row++;
         int cl = 0;
+        int col = 0;
         for(int x : y)
         {
+            col++;
             if(x == 1)
             {
                 cl++;
                 //render a block at that position
+                auto& block(manager.addEntity());
+                block.addComponent<CollisionComponent>("tetromino");
+                block.addComponent<TransformComponent>(topleft.x + (col * 64), topleft.y + (row * 64), 64, 64, 1);
+                block.addComponent<SpriteComponent>("tetro");
+                block.addGroup(groupEnvironment);
                 //add a collisionshape to that position to prevent pieces from going through it
                 if(cl == 10)
                 {

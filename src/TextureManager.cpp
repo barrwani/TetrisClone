@@ -1,6 +1,8 @@
 #include "../include/TextureManager.hpp"
 #include <iostream>
 
+
+//loads the texture
 SDL_Texture* TextureManager::LoadTexture(const char* fileName)
 {
     SDL_Surface* tempSurface = IMG_Load(fileName);
@@ -14,6 +16,8 @@ SDL_Texture* TextureManager::LoadTexture(const char* fileName)
     return tex;
 }
 
+
+//draws the texture
 void TextureManager::Draw(SDL_Texture* tex, SDL_Rect src, SDL_Rect dest, SDL_RendererFlip flip)
 {
     SDL_RenderCopyEx(Game::renderer, tex, &src, &dest, 0.0, nullptr, flip);

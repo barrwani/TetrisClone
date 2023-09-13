@@ -1,7 +1,10 @@
 #include "../include/KeyboardController.hpp"
 
+Utils::Timer timer;
+
 void KeyboardController::init()
 {
+
     transform = &entity->getComponent<TransformComponent>();
     sprite = &entity->getComponent<SpriteComponent>();
 }
@@ -11,10 +14,9 @@ int frameTime;
 
 void KeyboardController::update()
 {
-    //Instead of using frametime, maybe use Utils timer... it only moves once, but after timer it moves smoothly
-    if(frameTime % 20 == 0 && frameTime != 0)
+    if(timer.getTicks() > 100)
     {
-        frameStart = SDL_GetTicks();
+        timer.stop();
         pressed = false;
 
     }
@@ -24,27 +26,30 @@ void KeyboardController::update()
        Game::isRunning = false;
     }
 
-    frameTime = SDL_GetTicks() - frameStart;
+
 
 
 
 }
 
+//Tetromino piece movement
 void KeyboardController::tetris()
 {
-
     if(keystates[SDL_SCANCODE_LEFT] && !pressed)
     {
+        timer.start();
         pressed = true;
         transform->position.x -=64;
     }
     if(keystates[SDL_SCANCODE_RIGHT] && !pressed)
     {
+        timer.start();
         pressed = true;
         transform->position.x +=64;
     }
 }
 
+//8 way movement, not used in this game
 void KeyboardController::eightway()
 {
     transform->direction.x = 0;

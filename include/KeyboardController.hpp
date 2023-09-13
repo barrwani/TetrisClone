@@ -4,6 +4,7 @@
 
 #include "ECS.hpp"
 #include "Game.hpp"
+#include "Utils.hpp"
 #include "SpriteComponent.hpp"
 #include "TransformComponent.hpp"
 #include "Vector2.hpp"

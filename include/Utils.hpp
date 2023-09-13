@@ -51,7 +51,7 @@ namespace Utils
                 pausedTicks = 0;
             }
         }
-        Uint32 getTicks()
+        Uint32 getTicks() const
         {
             Uint32 time = 0;
             if (started)
@@ -67,8 +67,8 @@ namespace Utils
             }
             return time;
         }
-        bool isStarted(){ return started; }
-        bool isPaused(){ return paused && started; }
+        bool isStarted() const{ return started; }
+        bool isPaused() const{ return paused && started; }
 
     private:
         Uint32 startTicks;

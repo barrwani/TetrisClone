@@ -14,6 +14,7 @@ public:
     Vector2();
     Vector2(float x, float y);
 
+    //Maths functions
     Vector2& Add(const Vector2& vec);
     Vector2& Subtract(const Vector2& vec);
     Vector2& Multiply(const Vector2& vec);
@@ -29,7 +30,6 @@ public:
     friend Vector2& operator/(Vector2& v1, Vector2& v2);
     friend Vector2 operator/(Vector2& v1, int v2);
     friend Vector2 operator/(int v2, Vector2& v1);
-
     Vector2 operator*(const int& i);
     Vector2& operator+=(const Vector2& vec);
     Vector2& operator -=(const Vector2& vec);

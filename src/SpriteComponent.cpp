@@ -1,18 +1,20 @@
 #include "../include/SpriteComponent.hpp"
 
 
+//constructor
 SpriteComponent::SpriteComponent(const std::string& id)
 {
     setTex(id);
 }
 
+//destructor
 SpriteComponent::~SpriteComponent()
 {
     SDL_DestroyTexture(texture);
 }
 
 
-
+//initializes the sprite
 void SpriteComponent::init()
 {
     transform = &entity->getComponent<TransformComponent>();
@@ -24,6 +26,7 @@ void SpriteComponent::init()
 }
 
 
+//updates the position of the sprite
 void SpriteComponent::update()
 {
     destRect.x = static_cast<int>(transform->position.x );
@@ -32,12 +35,14 @@ void SpriteComponent::update()
     destRect.h = transform->getHeight() * transform->getScale();
 }
 
+//draws the sprite
 void SpriteComponent::draw()
 {
     TextureManager::Draw(texture, srcRect, destRect, spriteFlip);
 
 }
 
+//sets the texture of the sprite
 void SpriteComponent::setTex(const std::string& id)
 {
     texture = Game::assets->GetTexture(id);

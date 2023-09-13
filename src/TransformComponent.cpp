@@ -26,6 +26,7 @@ TransformComponent::TransformComponent(float x, float y)
 
 TransformComponent::TransformComponent(float x, float y, int h, int w, int s)
 {
+    //Set the initial position, height, width and scale
     position.x = x;
     position.y = y;
     height = h;
