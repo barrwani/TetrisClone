@@ -21,11 +21,15 @@ public:
     static bool spawnTetromino(int pieceshape); //spawns a tetromino
     static void firstFill(); //fills the next 5 pieces array
     static void newPiece(); //spawns a new piece
-    bool holdTetromino();
+    static bool holdTetromino(); //holding piece
+    static void setPiece(); //sets the piece
+    static void slamPiece(); //hard drops the piece
+    static void updateTetromino(int x, int y); //updates the tetromino position
     static void clearLine(int index);
     static bool running();
     static bool currentpiecegrounded; //used to check if the current piece is on the ground
-    static bool currentpieceonborder; //used to check if the current piece is on the border
+    static bool currentpieceonleft; //used to check if the current piece is on the left border
+    static bool currentpieceonright; //used to check if the current piece is on the right border
     static SDL_Renderer* renderer;
     static SDL_Event event;
     static bool isRunning;

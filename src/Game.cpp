@@ -2,6 +2,7 @@
 #include <iostream>
 #include "../include/Utils.hpp"
 #include <random>
+#include <queue>
 #include "../include/Collision.hpp"
 
 //SDL2 ECS Game Engine based on tutorial series by Carl Birch's Tutorial Series
@@ -9,11 +10,11 @@
 
 
 //TODO:
-// -Proper Tetromino Movement (left, right, soft drop, hard drop)
+// -Tetromino hard drop
 // -Fix Collision
 // -Tetromino Shapes
-// -Setting and Rotating
-// -Boundaries and Spawning
+// -Rotating
+// -Spawning
 // -Losing Mechanic
 // -Clear needs to be tested for more than one line being cleared at a time
 
@@ -22,16 +23,21 @@ SDL_Event Game::event;
 
 int fallticktime = 1000;
 int settime = 300;
+int currentpiece = NULL;
 Utils::Timer falltimer; //Timer for tetromino falling
 Utils::Timer settimer; //Timer for tetromino setting, resets when piece is rotated/moved
 Vector2 topleft(588.0f, -66.0f);
 
 int grid[15][10] = {};
 
-int nextfive[5];
+std::queue<int> nextfive;
+//use a queue
+
 bool inGame = true;
 bool Game::isRunning = false;
 bool Game::currentpiecegrounded = false;
+bool Game::currentpieceonleft = false;
+bool Game::currentpieceonright = false;
 
 Manager manager;
 auto& ui(manager.addEntity());
@@ -80,24 +86,24 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     ui.addComponent<SpriteComponent>("HUD");
     ui.addGroup(groupEnvironment);
     firstFill();
-    spawnTetromino(nextfive[0]);
-    //grid[5][5] = 1;
+    spawnTetromino(nextfive.front());
+    grid[5][5] = 1;
 }
 
 void Game::newPiece()
 {
     std::random_device rd;
     std::mt19937 mt(rd());
-    nextfive[0] =std::uniform_int_distribution<int>(1,7)(mt);
+    nextfive.push(std::uniform_int_distribution<int>(1,7)(mt));
 }
 
 void Game::firstFill()
 {
     std::random_device rd;
     std::mt19937 mt(rd());
-    for (int & i : nextfive)
+    for (int i = 0; i < 5; i++)
     {
-        i =std::uniform_int_distribution<int>(1,7)(mt);
+        nextfive.push(std::uniform_int_distribution<int>(1,7)(mt));
     }
 }
 
@@ -122,6 +128,8 @@ void Game::update() {
     manager.refresh();
     manager.update();
 
+    if(currentpiecegrounded){setPiece();}
+
     if (falltimer.getTicks() > fallticktime) {
         falltimer.stop();
         falltimer.start();
@@ -132,7 +140,6 @@ void Game::update() {
         }
         for (auto &t: tetrominos) {
 
-            std::cout << t->getComponent<TransformComponent>().position.y <<std::endl;
             for (auto &cc: colliders) {
                 SDL_Rect cCol = cc->getCollider();
                 if (Collision::AABB(cCol, t->getComponent<CollisionComponent>().collider)) {
@@ -149,6 +156,7 @@ bool Game::spawnTetromino(int pieceshape)
 {
     Game::currentpiecegrounded = false;
     falltimer.start();
+    currentpiece = pieceshape;
     //RNG decides the shape, 1-7
     switch (pieceshape){
         case I:
@@ -261,7 +269,7 @@ void Game::clearLine(int index)
                 grid[y][x] = 0;
         }
     }
-
+    std::cout << "Line Cleared!" << std::endl;
 }
 
 void Game::render()
@@ -289,21 +297,62 @@ void Game::render()
                 cl++;
                 //create and place a block at that position
                 auto& block(manager.addEntity());
-                block.addComponent<CollisionComponent>("tetromino");
-                block.addComponent<TransformComponent>(topleft.x + (col * 64), topleft.y + (row * 64), 64, 64, 1);
+                block.addComponent<CollisionComponent>("block");
+                block.addComponent<TransformComponent>(topleft.x + (col * 64), topleft.y + (row * 64)+64, 64, 64, 1);
                 block.addComponent<SpriteComponent>("tetro");
                 block.addGroup(groupEnvironment);
                 colliders.push_back(&block.getComponent<CollisionComponent>());
                 //add a collisionshape to that position to prevent pieces from going through it
                 if(cl == 10)
                 {
+
                     clearLine(row);
                 }
             }
         }
     }
     SDL_RenderPresent(renderer);
+}
 
+
+void Game::setPiece()
+{
+    for(auto& t: tetrominos)
+    {
+        float xpos = t->getComponent<TransformComponent>().position.x;
+        float ypos = t->getComponent<TransformComponent>().position.y;
+        int gridx = (xpos - topleft.x)/64 ;
+        int gridy = (ypos - topleft.y)/64 -2;
+        grid[gridy][gridx] = 1;
+        t->delGroup(groupTetromino);
+        std::cout << "set" << std::endl;
+
+    }
+}
+
+void Game::slamPiece()
+{
+    for(auto& t: tetrominos)
+    {
+       float xpos = t->getComponent<TransformComponent>().position.x;
+       float ypos = t->getComponent<TransformComponent>().position.y;
+       int gridx = (xpos - topleft.x)/64;
+       int gridy = (ypos - topleft.y)/64;
+        for(int y = gridy; y <15 - gridy; y++)
+        {
+            for(int x = gridx; x < 10-gridx; x++)
+            {
+                if(grid[y][x] == 1)
+                {
+                    Game::currentpiecegrounded = true;
+                }
+                else
+                {
+                    t->getComponent<TransformComponent>().position.y += 64;
+                }
+            }
+        }
+    }
 }
 
 
@@ -317,7 +366,30 @@ void Game::clean()
 bool Game::running() {return isRunning;}
 
 bool Game::holdTetromino() {
-    return false;
+    if (currentpiece == NULL)
+    {
+        currentpiece = nextfive.front();
+    }
 }
 
+void Game::updateTetromino(int x, int y) {
+    for(auto& t: tetrominos)
+    {
+        if(!currentpiecegrounded)
+        {
+            t->getComponent<TransformComponent>().position.y += y;
+        }
+        if(!currentpieceonleft && !currentpieceonright)
+        {
+            if(x > 0)
+            {
+                t->getComponent<TransformComponent>().position.x += x;
+            }
+            else if(x < 0)
+            {
+                t->getComponent<TransformComponent>().position.x += x;
+            }
+        }
 
+    }
+}

@@ -45,12 +45,11 @@ void KeyboardController::tetris()
         pressed = true;
         if(transform->position.x > 716 )
         {
-
-            transform->position.x -=64;
-            onEdge = false;
+            Game::updateTetromino(-64, 0);
+            Game::currentpieceonright = false;
         }
         else
-            onEdge = true;
+            Game::currentpieceonleft = true;
     }
     if(keystates[SDL_SCANCODE_RIGHT] && !pressed)
     {
@@ -58,11 +57,11 @@ void KeyboardController::tetris()
         pressed = true;
         if(transform->position.x < 588 + 64 * 10 )
         {
-            transform->position.x +=64;
-            onEdge = false;
+            Game::updateTetromino(64, 0);
+            Game::currentpieceonleft = false;
         }
         else
-            onEdge = true;
+            Game::currentpieceonright = true;
     }
     if(keystates[SDL_SCANCODE_DOWN] && !fallpressed)
     {
@@ -71,12 +70,15 @@ void KeyboardController::tetris()
 
         if(transform->position.y < 958 )
         {
-            transform->position.y +=64;
+            Game::updateTetromino(0, 64);
             onGround = false;
         }
         else
-            onGround = true;
-
+            Game::currentpiecegrounded = true;
+    }
+    if(keystates[SDL_SCANCODE_SPACE])
+    {
+        Game::slamPiece();
     }
 }
 
