@@ -24,7 +24,7 @@ public:
     bool holdTetromino();
     static void clearLine(int index);
     static bool running();
-
+    static bool currentpiecegrounded; //used to check if the current piece is on the ground
     static bool currentpieceonborder; //used to check if the current piece is on the border
     static SDL_Renderer* renderer;
     static SDL_Event event;

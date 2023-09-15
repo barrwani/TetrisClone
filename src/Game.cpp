@@ -10,13 +10,12 @@
 
 //TODO:
 // -Proper Tetromino Movement (left, right, soft drop, hard drop)
+// -Fix Collision
 // -Tetromino Shapes
 // -Setting and Rotating
 // -Boundaries and Spawning
-// -Next 5 pieces
 // -Losing Mechanic
 // -Clear needs to be tested for more than one line being cleared at a time
-
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
@@ -32,7 +31,7 @@ int grid[15][10] = {};
 int nextfive[5];
 bool inGame = true;
 bool Game::isRunning = false;
-
+bool Game::currentpiecegrounded = false;
 
 Manager manager;
 auto& ui(manager.addEntity());
@@ -82,7 +81,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     ui.addGroup(groupEnvironment);
     firstFill();
     spawnTetromino(nextfive[0]);
-    grid[5][5] = 1;
+    //grid[5][5] = 1;
 }
 
 void Game::newPiece()
@@ -98,7 +97,6 @@ void Game::firstFill()
     std::mt19937 mt(rd());
     for (int & i : nextfive)
     {
-
         i =std::uniform_int_distribution<int>(1,7)(mt);
     }
 }
@@ -120,71 +118,118 @@ void Game::handleEvents()
     }
 }
 
-void Game::update()
-{
-//    SDL_Rect tetCol = tetromino.getComponent<CollisionComponent>().collider;
-
+void Game::update() {
     manager.refresh();
     manager.update();
 
-    if (falltimer.getTicks() > fallticktime)
-    {
+    if (falltimer.getTicks() > fallticktime) {
         falltimer.stop();
         falltimer.start();
-        for(auto& t: tetrominos)
-        {
-            if(t->getComponent<TransformComponent>().position.y < 958)
-            {
+        for (auto &t: tetrominos) {
+            if (t->getComponent<TransformComponent>().position.y < 958 && !currentpiecegrounded){
                 t->getComponent<TransformComponent>().position.y += 64;
             }
         }
-    }
+        for (auto &t: tetrominos) {
 
-//    for(auto& cc: colliders)
-//    {
-//        SDL_Rect cCol = cc->getCollider();
-//        if (Collision::AABB(cCol, tetCol))
-//        {
-//            tetromino.getComponent<TransformComponent>().position =
-//            tetromino.getComponent<TransformComponent>().lastPosition;
-//        }
-//    }
-//
-//
-//    Vector2& position = tetromino.getComponent<TransformComponent>().position;
+            std::cout << t->getComponent<TransformComponent>().position.y <<std::endl;
+            for (auto &cc: colliders) {
+                SDL_Rect cCol = cc->getCollider();
+                if (Collision::AABB(cCol, t->getComponent<CollisionComponent>().collider)) {
+                    std::cout << "collider" << std::endl;
+                }
+            }
+        }
+    }
 }
+
+
 
 bool Game::spawnTetromino(int pieceshape)
 {
+    Game::currentpiecegrounded = false;
     falltimer.start();
-    //For spawning different shapes, have an RNG decide the shape then use switch case and a for loop that runs 4 times
+    //RNG decides the shape, 1-7
     switch (pieceshape){
         case I:
             for(int y = 1; y <=4; y++)
             {
-                auto& tetromino(manager.addEntity());
-                tetromino.addComponent<TransformComponent>(973.0f, 62.0f * y, 64, 64, 1);
-                tetromino.addComponent<CollisionComponent>("tetromino");
-                tetromino.addComponent<SpriteComponent>("tetro");
-                tetromino.addComponent<KeyboardController>();
-                tetromino.addGroup(groupTetromino);
+                auto& block(manager.addEntity());
+                block.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
+                block.addComponent<CollisionComponent>("tetromino");
+                block.addComponent<SpriteComponent>("tetro");
+                block.addComponent<KeyboardController>();
+                block.addGroup(groupTetromino);
             }
-            break;
+            return true;
         case S:
-
-            break;
+            for(int y = 1; y <=4; y++)
+            {
+                auto& block(manager.addEntity());
+                block.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
+                block.addComponent<CollisionComponent>("tetromino");
+                block.addComponent<SpriteComponent>("tetro");
+                block.addComponent<KeyboardController>();
+                block.addGroup(groupTetromino);
+            }
+            return true;
         case Z:
-            break;
+            for(int y = 1; y <=4; y++)
+            {
+                auto& block(manager.addEntity());
+                block.addComponent<TransformComponent>(973.0f, 62.0f+(64*y), 64, 64, 1);
+                block.addComponent<CollisionComponent>("tetromino");
+                block.addComponent<SpriteComponent>("tetro");
+                block.addComponent<KeyboardController>();
+                block.addGroup(groupTetromino);
+            }
+            return true;
         case J:
-            break;
+            for(int y = 1; y <=4; y++)
+            {
+                auto& block(manager.addEntity());
+                block.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
+                block.addComponent<CollisionComponent>("tetromino");
+                block.addComponent<SpriteComponent>("tetro");
+                block.addComponent<KeyboardController>();
+                block.addGroup(groupTetromino);
+            }
+            return true;
         case O:
-            break;
+            for(int y = 1; y <=4; y++)
+            {
+                auto& block(manager.addEntity());
+                block.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
+                block.addComponent<CollisionComponent>("tetromino");
+                block.addComponent<SpriteComponent>("tetro");
+                block.addComponent<KeyboardController>();
+                block.addGroup(groupTetromino);
+            }
+            return true;
         case T:
-            break;
+            for(int y = 1; y <=4; y++)
+            {
+                auto& block(manager.addEntity());
+                block.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
+                block.addComponent<CollisionComponent>("tetromino");
+                block.addComponent<SpriteComponent>("tetro");
+                block.addComponent<KeyboardController>();
+                block.addGroup(groupTetromino);
+            }
+            return true;
         case L:
-            break;
+            for(int y = 1; y <=4; y++)
+            {
+                auto& block(manager.addEntity());
+                block.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
+                block.addComponent<CollisionComponent>("tetromino");
+                block.addComponent<SpriteComponent>("tetro");
+                block.addComponent<KeyboardController>();
+                block.addGroup(groupTetromino);
+            }
+            return true;
         default:
-            break;
+            return false;
 
     }
 
@@ -195,12 +240,7 @@ bool Game::spawnTetromino(int pieceshape)
     //-things like valid rotations/movement
     //Position is public, process all disallowance of movement in Game script where all 4 pieces are accessible
 
-    auto& tetromino(manager.addEntity());
-    tetromino.addComponent<TransformComponent>(973.0f, 62.0f, 64, 64, 1);
-    tetromino.addComponent<CollisionComponent>("tetromino");
-    tetromino.addComponent<SpriteComponent>("tetro");
-    tetromino.addComponent<KeyboardController>();
-    tetromino.addGroup(groupTetromino);
+
 
 }
 
@@ -247,12 +287,13 @@ void Game::render()
             if(x == 1)
             {
                 cl++;
-                //render a block at that position
+                //create and place a block at that position
                 auto& block(manager.addEntity());
                 block.addComponent<CollisionComponent>("tetromino");
                 block.addComponent<TransformComponent>(topleft.x + (col * 64), topleft.y + (row * 64), 64, 64, 1);
                 block.addComponent<SpriteComponent>("tetro");
                 block.addGroup(groupEnvironment);
+                colliders.push_back(&block.getComponent<CollisionComponent>());
                 //add a collisionshape to that position to prevent pieces from going through it
                 if(cl == 10)
                 {
@@ -274,5 +315,9 @@ void Game::clean()
     std::cout << "Game cleaned!" << std::endl;
 }
 bool Game::running() {return isRunning;}
+
+bool Game::holdTetromino() {
+    return false;
+}
 
 

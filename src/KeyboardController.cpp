@@ -1,35 +1,39 @@
 #include "../include/KeyboardController.hpp"
 
 Utils::Timer timer;
-
+Utils::Timer droptimer;
 void KeyboardController::init()
 {
-
     transform = &entity->getComponent<TransformComponent>();
     sprite = &entity->getComponent<SpriteComponent>();
 }
 bool pressed = false;
-Uint32 frameStart;
-int frameTime;
+bool fallpressed = false;
+
+
 
 void KeyboardController::update()
 {
+    if(transform->position.y >=958)
+    {
+        Game::currentpiecegrounded = true;
+    }
     if(timer.getTicks() > 100)
     {
         timer.stop();
         pressed = false;
 
     }
+    if(droptimer.getTicks() > 100)
+    {
+        droptimer.stop();
+        fallpressed = false;
+    }
     tetris();
     if(keystates[SDL_SCANCODE_ESCAPE])
     {
        Game::isRunning = false;
     }
-
-
-
-
-
 }
 
 //Tetromino piece movement
@@ -39,13 +43,40 @@ void KeyboardController::tetris()
     {
         timer.start();
         pressed = true;
-        transform->position.x -=64;
+        if(transform->position.x > 716 )
+        {
+
+            transform->position.x -=64;
+            onEdge = false;
+        }
+        else
+            onEdge = true;
     }
     if(keystates[SDL_SCANCODE_RIGHT] && !pressed)
     {
         timer.start();
         pressed = true;
-        transform->position.x +=64;
+        if(transform->position.x < 588 + 64 * 10 )
+        {
+            transform->position.x +=64;
+            onEdge = false;
+        }
+        else
+            onEdge = true;
+    }
+    if(keystates[SDL_SCANCODE_DOWN] && !fallpressed)
+    {
+        droptimer.start();
+        fallpressed = true;
+
+        if(transform->position.y < 958 )
+        {
+            transform->position.y +=64;
+            onGround = false;
+        }
+        else
+            onGround = true;
+
     }
 }
 

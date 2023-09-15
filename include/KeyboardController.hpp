@@ -20,6 +20,10 @@ private:
 
 
 public:
+    bool onEdge = false;
+    bool onGround = false;
+    bool otherPieceBlockedleft = false;
+    bool otherPieceBlockedright = false;
     void init() override;
     void update() override;
     void eightway();
