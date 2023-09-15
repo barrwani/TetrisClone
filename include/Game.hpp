@@ -18,6 +18,7 @@ public:
     static void update();
     static void render();
     void clean();
+    static bool justheld; //used to check if the piece was just held
     static bool spawnTetromino(int pieceshape); //spawns a tetromino
     static void firstFill(); //fills the next 5 pieces array
     static void newPiece(); //spawns a new piece

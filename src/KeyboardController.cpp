@@ -6,6 +6,9 @@ void KeyboardController::init()
 {
     transform = &entity->getComponent<TransformComponent>();
     sprite = &entity->getComponent<SpriteComponent>();
+    Game::currentpiecegrounded = false;
+    Game::currentpieceonleft = false;
+    Game::currentpieceonright = false;
 }
 bool pressed = false;
 bool fallpressed = false;
@@ -33,6 +36,11 @@ void KeyboardController::update()
     if(keystates[SDL_SCANCODE_ESCAPE])
     {
        Game::isRunning = false;
+    }
+    if(keystates[SDL_SCANCODE_C])
+    {
+        if(!Game::justheld)
+            Game::holdTetromino();
     }
 }
 
@@ -74,7 +82,9 @@ void KeyboardController::tetris()
             onGround = false;
         }
         else
+        {
             Game::currentpiecegrounded = true;
+        }
     }
     if(keystates[SDL_SCANCODE_SPACE])
     {

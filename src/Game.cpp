@@ -10,6 +10,7 @@
 
 
 //TODO:
+// -Fix next piece spawning, issue with setPiece()
 // -Tetromino hard drop
 // -Fix Collision
 // -Tetromino Shapes
@@ -21,6 +22,7 @@
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
+bool Game::justheld = false;
 int fallticktime = 1000;
 int settime = 300;
 int currentpiece = NULL;
@@ -30,8 +32,9 @@ Vector2 topleft(588.0f, -66.0f);
 
 int grid[15][10] = {};
 
+
+//next 5 pieces
 std::queue<int> nextfive;
-//use a queue
 
 bool inGame = true;
 bool Game::isRunning = false;
@@ -87,7 +90,6 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     ui.addGroup(groupEnvironment);
     firstFill();
     spawnTetromino(nextfive.front());
-    grid[5][5] = 1;
 }
 
 void Game::newPiece()
@@ -128,7 +130,11 @@ void Game::update() {
     manager.refresh();
     manager.update();
 
-    if(currentpiecegrounded){setPiece();}
+    if(Game::currentpiecegrounded)
+    {
+        setPiece();
+        Game::currentpiecegrounded = false;
+    }
 
     if (falltimer.getTicks() > fallticktime) {
         falltimer.stop();
@@ -247,9 +253,6 @@ bool Game::spawnTetromino(int pieceshape)
     //There will be some boundary issues so a relative position of the borders should be kept and used to determine-
     //-things like valid rotations/movement
     //Position is public, process all disallowance of movement in Game script where all 4 pieces are accessible
-
-
-
 }
 
 void Game::clearLine(int index)
@@ -305,7 +308,6 @@ void Game::render()
                 //add a collisionshape to that position to prevent pieces from going through it
                 if(cl == 10)
                 {
-
                     clearLine(row);
                 }
             }
@@ -326,8 +328,15 @@ void Game::setPiece()
         grid[gridy][gridx] = 1;
         t->delGroup(groupTetromino);
         std::cout << "set" << std::endl;
-
     }
+    tetrominos.clear();
+    Game::justheld = false;
+    Game::currentpiecegrounded = false;
+    Game::currentpieceonright = false;
+    Game::currentpieceonleft = false;
+    spawnTetromino(nextfive.front());
+    nextfive.pop();
+    newPiece();
 }
 
 void Game::slamPiece()
@@ -369,6 +378,7 @@ bool Game::holdTetromino() {
     if (currentpiece == NULL)
     {
         currentpiece = nextfive.front();
+        justheld = true;
     }
 }
 
