@@ -20,6 +20,7 @@ void KeyboardController::update()
     if(transform->position.y >=958)
     {
         Game::currentpiecegrounded = true;
+        delete this;
     }
     if(timer.getTicks() > 100)
     {
@@ -53,6 +54,7 @@ void KeyboardController::tetris()
         pressed = true;
         if(transform->position.x > 716 )
         {
+            std::cout << transform->position.x << std::endl;
             Game::updateTetromino(-64, 0);
             Game::currentpieceonright = false;
         }

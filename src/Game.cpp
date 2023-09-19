@@ -10,18 +10,18 @@
 
 
 //TODO:
-// -Fix next piece spawning, issue with setPiece()
-// -Tetromino hard drop
+// -Fix grid, maybe change to 2d array holding positions rather than rendering blocks at set coords
 // -Fix Collision
 // -Tetromino Shapes
 // -Rotating
-// -Spawning
+// -Tetromino hard drop
 // -Losing Mechanic
-// -Clear needs to be tested for more than one line being cleared at a time
+// -Fix Clear (comes after fixing the array)
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
+bool justplaced = false;
 bool Game::justheld = false;
 int fallticktime = 1000;
 int settime = 300;
@@ -130,10 +130,10 @@ void Game::update() {
     manager.refresh();
     manager.update();
 
-    if(Game::currentpiecegrounded)
+    if(currentpiecegrounded)
     {
         setPiece();
-        Game::currentpiecegrounded = false;
+        currentpiecegrounded = false;
     }
 
     if (falltimer.getTicks() > fallticktime) {
@@ -160,6 +160,7 @@ void Game::update() {
 
 bool Game::spawnTetromino(int pieceshape)
 {
+    tetrominos.clear();
     Game::currentpiecegrounded = false;
     falltimer.start();
     currentpiece = pieceshape;
@@ -177,7 +178,7 @@ bool Game::spawnTetromino(int pieceshape)
             }
             return true;
         case S:
-            for(int y = 1; y <=4; y++)
+            for(int y = 1; y <=2; y++)
             {
                 auto& block(manager.addEntity());
                 block.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
@@ -186,6 +187,16 @@ bool Game::spawnTetromino(int pieceshape)
                 block.addComponent<KeyboardController>();
                 block.addGroup(groupTetromino);
             }
+            for(int x = 1; x <= 2; x++)
+            {
+                auto& block(manager.addEntity());
+                block.addComponent<TransformComponent>(973.0f, 62.0f +(64), 64*x, 64, 1);
+                block.addComponent<CollisionComponent>("tetromino");
+                block.addComponent<SpriteComponent>("tetro");
+                block.addComponent<KeyboardController>();
+                block.addGroup(groupTetromino);
+            }
+
             return true;
         case Z:
             for(int y = 1; y <=4; y++)
@@ -286,6 +297,11 @@ void Game::render()
     {
         t->draw();
     }
+    SDL_RenderPresent(renderer);
+}
+
+void Game::updateGrid()
+{
     int row = 0;
     for(auto & y : grid)
     {
@@ -297,6 +313,7 @@ void Game::render()
             col++;
             if(x == 1)
             {
+                std::cout << col << ", " << row << std::endl;
                 cl++;
                 //create and place a block at that position
                 auto& block(manager.addEntity());
@@ -313,23 +330,20 @@ void Game::render()
             }
         }
     }
-    SDL_RenderPresent(renderer);
 }
-
-
 void Game::setPiece()
 {
     for(auto& t: tetrominos)
     {
-        float xpos = t->getComponent<TransformComponent>().position.x;
-        float ypos = t->getComponent<TransformComponent>().position.y;
-        int gridx = (xpos - topleft.x)/64 ;
-        int gridy = (ypos - topleft.y)/64 -2;
-        grid[gridy][gridx] = 1;
-        t->delGroup(groupTetromino);
-        std::cout << "set" << std::endl;
+            float xpos = t->getComponent<TransformComponent>().position.x;
+            float ypos = t->getComponent<TransformComponent>().position.y;
+            int gridx = (xpos - topleft.x) / 64 - 1;
+            int gridy = ((ypos - topleft.y) / 64 - 2);
+            grid[gridy][gridx] = 1;
+//            t->addGroup(groupEnvironment);
+            t->delGroup(groupTetromino);
+
     }
-    tetrominos.clear();
     Game::justheld = false;
     Game::currentpiecegrounded = false;
     Game::currentpieceonright = false;
@@ -337,31 +351,33 @@ void Game::setPiece()
     spawnTetromino(nextfive.front());
     nextfive.pop();
     newPiece();
+    updateGrid();
+
 }
 
 void Game::slamPiece()
 {
-    for(auto& t: tetrominos)
-    {
-       float xpos = t->getComponent<TransformComponent>().position.x;
-       float ypos = t->getComponent<TransformComponent>().position.y;
-       int gridx = (xpos - topleft.x)/64;
-       int gridy = (ypos - topleft.y)/64;
-        for(int y = gridy; y <15 - gridy; y++)
-        {
-            for(int x = gridx; x < 10-gridx; x++)
-            {
-                if(grid[y][x] == 1)
-                {
-                    Game::currentpiecegrounded = true;
-                }
-                else
-                {
-                    t->getComponent<TransformComponent>().position.y += 64;
-                }
-            }
-        }
-    }
+//    for(auto& t: tetrominos)
+//    {
+//       float xpos = t->getComponent<TransformComponent>().position.x;
+//       float ypos = t->getComponent<TransformComponent>().position.y;
+//       int gridx = (xpos - topleft.x)/64;
+//       int gridy = (ypos - topleft.y)/64;
+//        for(int y = gridy; y <15 - gridy; y++)
+//        {
+//            for(int x = gridx; x < 10-gridx; x++)
+//            {
+//                if(grid[y][x] == 1)
+//                {
+//                    Game::currentpiecegrounded = true;
+//                }
+//                else
+//                {
+//                    t->getComponent<TransformComponent>().position.y += 64;
+//                }
+//            }
+//        }
+//    }
 }
 
 
