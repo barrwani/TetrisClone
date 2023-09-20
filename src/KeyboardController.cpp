@@ -54,8 +54,7 @@ void KeyboardController::tetris()
         pressed = true;
         if(transform->position.x > 716 )
         {
-            std::cout << transform->position.x << std::endl;
-            Game::updateTetromino(-64, 0);
+                Game::updateTetromino(-64, 0);
             Game::currentpieceonright = false;
         }
         else

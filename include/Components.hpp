@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "ECS.hpp"
+#include "TileComponent.hpp"
 #include "TransformComponent.hpp"
 #include "SpriteComponent.hpp"
 #include "KeyboardController.hpp"

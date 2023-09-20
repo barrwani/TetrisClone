@@ -17,6 +17,8 @@ link_directories(${SDL2_IMAGES_LIB_DIR})
 add_executable(TetrisClone src/main.cpp include/Utils.hpp src/Game.cpp include/Game.hpp include/TextureManager.hpp src/TextureManager.cpp include/ECS.hpp include/Components.hpp include/TransformComponent.hpp include/SpriteComponent.hpp include/Vector2.hpp src/Vector2.cpp include/KeyboardController.hpp src/TransformComponent.cpp src/SpriteComponent.cpp src/KeyboardController.cpp src/ECS.cpp src/CollisionComponent.cpp include/CollisionComponent.hpp src/Collision.cpp include/Collision.hpp
         src/AssetManager.cpp
         include/AssetManager.hpp
+        src/TileComponent.cpp
+        include/TileComponent.hpp
 )
 
 target_link_libraries(${PROJECT_NAME} SDL2main SDL2 )

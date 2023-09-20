@@ -30,6 +30,7 @@ Utils::Timer falltimer; //Timer for tetromino falling
 Utils::Timer settimer; //Timer for tetromino setting, resets when piece is rotated/moved
 Vector2 topleft(588.0f, -66.0f);
 
+
 int grid[15][10] = {};
 
 
@@ -87,8 +88,10 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 
     ui.addComponent<TransformComponent>(0.0f,0.0f, 1080, 1920,1);
     ui.addComponent<SpriteComponent>("HUD");
-    ui.addGroup(groupEnvironment);
+    ui.addGroup(groupUI);
     firstFill();
+    grid[5][5] = 1;
+    updateGrid();
     spawnTetromino(nextfive.front());
 }
 
@@ -111,6 +114,7 @@ void Game::firstFill()
 
 
 auto& tetrominos(manager.getGroup(Game::groupTetromino));
+auto& hud(manager.getGroup(Game::groupUI));
 auto& environment(manager.getGroup(Game::groupEnvironment));
 
 void Game::handleEvents()
@@ -144,13 +148,16 @@ void Game::update() {
                 t->getComponent<TransformComponent>().position.y += 64;
             }
         }
-        for (auto &t: tetrominos) {
+    }
+    for (auto &t: tetrominos) {
 
-            for (auto &cc: colliders) {
-                SDL_Rect cCol = cc->getCollider();
-                if (Collision::AABB(cCol, t->getComponent<CollisionComponent>().collider)) {
-                    std::cout << "collider" << std::endl;
-                }
+        for (auto &cc: colliders)
+        {
+            SDL_Rect cCol = cc->getCollider();
+            SDL_Rect tCol = t->getComponent<CollisionComponent>().collider;
+            if (Collision::AABB(cCol, tCol))
+            {
+                setPiece();
             }
         }
     }
@@ -166,91 +173,92 @@ bool Game::spawnTetromino(int pieceshape)
     currentpiece = pieceshape;
     //RNG decides the shape, 1-7
     switch (pieceshape){
+        //TODO: Add all the shapes
         case I:
             for(int y = 1; y <=4; y++)
             {
-                auto& block(manager.addEntity());
-                block.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
-                block.addComponent<CollisionComponent>("tetromino");
-                block.addComponent<SpriteComponent>("tetro");
-                block.addComponent<KeyboardController>();
-                block.addGroup(groupTetromino);
+                auto& segment(manager.addEntity());
+                segment.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
+                segment.addComponent<CollisionComponent>("tetromino");
+                segment.addComponent<SpriteComponent>("tetro");
+                segment.addComponent<KeyboardController>();
+                segment.addGroup(groupTetromino);
             }
             return true;
         case S:
             for(int y = 1; y <=2; y++)
             {
-                auto& block(manager.addEntity());
-                block.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
-                block.addComponent<CollisionComponent>("tetromino");
-                block.addComponent<SpriteComponent>("tetro");
-                block.addComponent<KeyboardController>();
-                block.addGroup(groupTetromino);
+                auto& segment(manager.addEntity());
+                segment.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
+                segment.addComponent<CollisionComponent>("tetromino");
+                segment.addComponent<SpriteComponent>("tetro");
+                segment.addComponent<KeyboardController>();
+                segment.addGroup(groupTetromino);
             }
             for(int x = 1; x <= 2; x++)
             {
-                auto& block(manager.addEntity());
-                block.addComponent<TransformComponent>(973.0f, 62.0f +(64), 64*x, 64, 1);
-                block.addComponent<CollisionComponent>("tetromino");
-                block.addComponent<SpriteComponent>("tetro");
-                block.addComponent<KeyboardController>();
-                block.addGroup(groupTetromino);
+                auto& segment(manager.addEntity());
+                segment.addComponent<TransformComponent>(973.0f, 62.0f +(64), 64*x, 64, 1);
+                segment.addComponent<CollisionComponent>("tetromino");
+                segment.addComponent<SpriteComponent>("tetro");
+                segment.addComponent<KeyboardController>();
+                segment.addGroup(groupTetromino);
             }
 
             return true;
         case Z:
             for(int y = 1; y <=4; y++)
             {
-                auto& block(manager.addEntity());
-                block.addComponent<TransformComponent>(973.0f, 62.0f+(64*y), 64, 64, 1);
-                block.addComponent<CollisionComponent>("tetromino");
-                block.addComponent<SpriteComponent>("tetro");
-                block.addComponent<KeyboardController>();
-                block.addGroup(groupTetromino);
+                auto& segment(manager.addEntity());
+                segment.addComponent<TransformComponent>(973.0f, 62.0f+(64*y), 64, 64, 1);
+                segment.addComponent<CollisionComponent>("tetromino");
+                segment.addComponent<SpriteComponent>("tetro");
+                segment.addComponent<KeyboardController>();
+                segment.addGroup(groupTetromino);
             }
             return true;
         case J:
             for(int y = 1; y <=4; y++)
             {
-                auto& block(manager.addEntity());
-                block.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
-                block.addComponent<CollisionComponent>("tetromino");
-                block.addComponent<SpriteComponent>("tetro");
-                block.addComponent<KeyboardController>();
-                block.addGroup(groupTetromino);
+                auto& segment(manager.addEntity());
+                segment.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
+                segment.addComponent<CollisionComponent>("tetromino");
+                segment.addComponent<SpriteComponent>("tetro");
+                segment.addComponent<KeyboardController>();
+                segment.addGroup(groupTetromino);
             }
             return true;
         case O:
             for(int y = 1; y <=4; y++)
             {
-                auto& block(manager.addEntity());
-                block.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
-                block.addComponent<CollisionComponent>("tetromino");
-                block.addComponent<SpriteComponent>("tetro");
-                block.addComponent<KeyboardController>();
-                block.addGroup(groupTetromino);
+                auto& segment(manager.addEntity());
+                segment.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
+                segment.addComponent<CollisionComponent>("tetromino");
+                segment.addComponent<SpriteComponent>("tetro");
+                segment.addComponent<KeyboardController>();
+                segment.addGroup(groupTetromino);
             }
             return true;
         case T:
             for(int y = 1; y <=4; y++)
             {
-                auto& block(manager.addEntity());
-                block.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
-                block.addComponent<CollisionComponent>("tetromino");
-                block.addComponent<SpriteComponent>("tetro");
-                block.addComponent<KeyboardController>();
-                block.addGroup(groupTetromino);
+                auto& segment(manager.addEntity());
+                segment.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
+                segment.addComponent<CollisionComponent>("tetromino");
+                segment.addComponent<SpriteComponent>("tetro");
+                segment.addComponent<KeyboardController>();
+                segment.addGroup(groupTetromino);
             }
             return true;
         case L:
             for(int y = 1; y <=4; y++)
             {
-                auto& block(manager.addEntity());
-                block.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
-                block.addComponent<CollisionComponent>("tetromino");
-                block.addComponent<SpriteComponent>("tetro");
-                block.addComponent<KeyboardController>();
-                block.addGroup(groupTetromino);
+                auto& segment(manager.addEntity());
+                segment.addComponent<TransformComponent>(973.0f, 62.0f +(64*y), 64, 64, 1);
+                segment.addComponent<CollisionComponent>("tetromino");
+                segment.addComponent<SpriteComponent>("tetro");
+                segment.addComponent<KeyboardController>();
+                segment.addGroup(groupTetromino);
             }
             return true;
         default:
@@ -280,28 +288,49 @@ void Game::clearLine(int index)
             }
             //Once the loop reaches the top of the grid it sets the shifted line to 0
             else
+            {
                 grid[y][x] = 0;
+                for(auto& b : environment)
+                {
+                    if(b->getComponent<TileComponent>().position.x ==
+                    topleft.x + (x * 64) && b->getComponent<TileComponent>().position.y == topleft.y + (y * 64))
+                    {
+                        b->destroy();
+                    }
+
+                }
+            }
         }
     }
+
+
     std::cout << "Line Cleared!" << std::endl;
 }
 
 void Game::render()
 {
     SDL_RenderClear(renderer);
-    for (auto& e: environment)
+    for (auto& h: hud)
     {
-        e->draw();
+        h->draw();
     }
     for(auto& t: tetrominos)
     {
         t->draw();
+    }
+    for (auto& e: environment)
+    {
+        e->draw();
     }
     SDL_RenderPresent(renderer);
 }
 
 void Game::updateGrid()
 {
+    for(auto& b : environment)
+    {
+        b->destroy();
+    }
     int row = 0;
     for(auto & y : grid)
     {
@@ -313,13 +342,11 @@ void Game::updateGrid()
             col++;
             if(x == 1)
             {
-                std::cout << col << ", " << row << std::endl;
                 cl++;
                 //create and place a block at that position
                 auto& block(manager.addEntity());
                 block.addComponent<CollisionComponent>("block");
-                block.addComponent<TransformComponent>(topleft.x + (col * 64), topleft.y + (row * 64)+64, 64, 64, 1);
-                block.addComponent<SpriteComponent>("tetro");
+                block.addComponent<TileComponent>(64,64,topleft.x + (col * 64), topleft.y + (row * 64)+64, 64,1, "tetro");
                 block.addGroup(groupEnvironment);
                 colliders.push_back(&block.getComponent<CollisionComponent>());
                 //add a collisionshape to that position to prevent pieces from going through it
@@ -337,10 +364,9 @@ void Game::setPiece()
     {
             float xpos = t->getComponent<TransformComponent>().position.x;
             float ypos = t->getComponent<TransformComponent>().position.y;
-            int gridx = (xpos - topleft.x) / 64 - 1;
-            int gridy = ((ypos - topleft.y) / 64 - 2);
+            int gridx = ((xpos - topleft.x) / 64) - 1;
+            int gridy = (((ypos - topleft.y) / 64) - 2);
             grid[gridy][gridx] = 1;
-//            t->addGroup(groupEnvironment);
             t->delGroup(groupTetromino);
 
     }
@@ -407,15 +433,9 @@ void Game::updateTetromino(int x, int y) {
         }
         if(!currentpieceonleft && !currentpieceonright)
         {
-            if(x > 0)
-            {
-                t->getComponent<TransformComponent>().position.x += x;
-            }
-            else if(x < 0)
-            {
-                t->getComponent<TransformComponent>().position.x += x;
-            }
+            t->getComponent<TransformComponent>().position.x += x;
         }
+
 
     }
 }

@@ -126,6 +126,13 @@ build CMakeFiles/TetrisClone.dir/src/AssetManager.cpp.obj: CXX_COMPILER__TetrisC
   OBJECT_DIR = CMakeFiles\TetrisClone.dir
   OBJECT_FILE_DIR = CMakeFiles\TetrisClone.dir\src
 
+build CMakeFiles/TetrisClone.dir/src/TileComponent.cpp.obj: CXX_COMPILER__TetrisClone_unscanned_Debug C$:/Users/asood/CLionProjects/TetrisClone/src/TileComponent.cpp || cmake_object_order_depends_target_TetrisClone
+  DEP_FILE = CMakeFiles\TetrisClone.dir\src\TileComponent.cpp.obj.d
+  FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
+  INCLUDES = -IC:/libs/sdl2/include -IC:/libs/sdl2_image/include
+  OBJECT_DIR = CMakeFiles\TetrisClone.dir
+  OBJECT_FILE_DIR = CMakeFiles\TetrisClone.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target TetrisClone
@@ -134,7 +141,7 @@ build CMakeFiles/TetrisClone.dir/src/AssetManager.cpp.obj: CXX_COMPILER__TetrisC
 #############################################
 # Link the executable TetrisClone.exe
 
-build TetrisClone.exe: CXX_EXECUTABLE_LINKER__TetrisClone_Debug CMakeFiles/TetrisClone.dir/src/main.cpp.obj CMakeFiles/TetrisClone.dir/src/Game.cpp.obj CMakeFiles/TetrisClone.dir/src/TextureManager.cpp.obj CMakeFiles/TetrisClone.dir/src/Vector2.cpp.obj CMakeFiles/TetrisClone.dir/src/TransformComponent.cpp.obj CMakeFiles/TetrisClone.dir/src/SpriteComponent.cpp.obj CMakeFiles/TetrisClone.dir/src/KeyboardController.cpp.obj CMakeFiles/TetrisClone.dir/src/ECS.cpp.obj CMakeFiles/TetrisClone.dir/src/CollisionComponent.cpp.obj CMakeFiles/TetrisClone.dir/src/Collision.cpp.obj CMakeFiles/TetrisClone.dir/src/AssetManager.cpp.obj
+build TetrisClone.exe: CXX_EXECUTABLE_LINKER__TetrisClone_Debug CMakeFiles/TetrisClone.dir/src/main.cpp.obj CMakeFiles/TetrisClone.dir/src/Game.cpp.obj CMakeFiles/TetrisClone.dir/src/TextureManager.cpp.obj CMakeFiles/TetrisClone.dir/src/Vector2.cpp.obj CMakeFiles/TetrisClone.dir/src/TransformComponent.cpp.obj CMakeFiles/TetrisClone.dir/src/SpriteComponent.cpp.obj CMakeFiles/TetrisClone.dir/src/KeyboardController.cpp.obj CMakeFiles/TetrisClone.dir/src/ECS.cpp.obj CMakeFiles/TetrisClone.dir/src/CollisionComponent.cpp.obj CMakeFiles/TetrisClone.dir/src/Collision.cpp.obj CMakeFiles/TetrisClone.dir/src/AssetManager.cpp.obj CMakeFiles/TetrisClone.dir/src/TileComponent.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lSDL2main  -lSDL2  -lSDL2_image  -lSDL2  -lSDL2_image  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/libs/sdl2/lib/x86   -LC:/libs/sdl2_image/lib/x86

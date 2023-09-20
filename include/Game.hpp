@@ -41,6 +41,7 @@ public:
     {
         groupTetromino,
         groupColliders,
+        groupUI,
         groupEnvironment
     };
 
